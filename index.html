@@ -4,538 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sama.ai - Revolutionary AI Solutions</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            background: radial-gradient(circle at top, #1a0b33, #05020f 60%);
-            color: #ffffff;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-        }
-
-        .logo-icon::before {
-            content: '○';
-            font-size: 1.8rem;
-            color: white;
-            font-weight: 300;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 400;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #a855f7;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            padding: 6rem 5% 4rem;
-            gap: 4rem;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 650px;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #d1d5db;
-            margin-bottom: 3rem;
-            font-weight: 300;
-        }
-
-        /* Stats */
-        .stats {
-            display: flex;
-            gap: 4rem;
-            margin-bottom: 3rem;
-        }
-
-        .stat-item {
-            text-align: left;
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #c084fc, #e879f9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.3rem;
-        }
-
-        .stat-label {
-            font-size: 0.95rem;
-            color: #9ca3af;
-            font-weight: 400;
-        }
-
-        /* Buttons */
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .btn-primary {
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
-        }
-
-        .btn-secondary {
-            padding: 1rem 2.5rem;
-            background: transparent;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .btn-secondary:hover {
-            border-color: #a855f7;
-            background: rgba(139, 92, 246, 0.1);
-        }
-
-        /* Hero Visual */
-        .hero-visual {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 600px;
-        }
-
-        .energy-circle {
-            position: relative;
-            width: 500px;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .energy-circle::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent 70%);
-            border-radius: 50%;
-            filter: blur(40px);
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.1); opacity: 1; }
-        }
-
-        .logo-display {
-            position: relative;
-            z-index: 2;
-            font-size: 8rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 0 60px rgba(139, 92, 246, 0.8);
-            letter-spacing: 5px;
-        }
-
-        .energy-flow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%237c3aed;stop-opacity:0.6"/><stop offset="50%" style="stop-color:%23a855f7;stop-opacity:0.4"/><stop offset="100%" style="stop-color:%23ec4899;stop-opacity:0.6"/></linearGradient></defs><path d="M100,250 Q150,150 250,100 T400,250 Q350,350 250,400 T100,250" fill="none" stroke="url(%23g)" stroke-width="3" opacity="0.6"/></svg>') center/contain no-repeat;
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Solutions Section */
-        .section {
-            padding: 6rem 5%;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #9ca3af;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .solution-card {
-            background: rgba(139, 92, 246, 0.05);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            transition: all 0.3s;
-        }
-
-        .solution-card:hover {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: rgba(139, 92, 246, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .solution-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .solution-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .solution-card p {
-            color: #9ca3af;
-            line-height: 1.7;
-        }
-
-        /* Technology Section */
-        .tech-section {
-            background: linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.03), transparent);
-            padding: 6rem 5%;
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 3rem auto 0;
-        }
-
-        .tech-card {
-            background: rgba(139, 92, 246, 0.05);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .tech-card:hover {
-            background: rgba(139, 92, 246, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .tech-card h4 {
-            font-size: 1.3rem;
-            color: #a855f7;
-            margin-bottom: 0.5rem;
-        }
-
-        .tech-card p {
-            color: #9ca3af;
-            font-size: 0.95rem;
-        }
-
-        /* Investors Section */
-        .investors-section {
-            padding: 6rem 5%;
-            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.08), transparent);
-        }
-
-        .investors-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .highlight-box {
-            background: rgba(139, 92, 246, 0.1);
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 4px solid #a855f7;
-            margin: 1.5rem 0;
-        }
-
-        .highlight-box h4 {
-            color: #a855f7;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .highlight-box p {
-            color: #d1d5db;
-            line-height: 1.7;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 6rem 5%;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 3rem auto 0;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.5rem;
-            background: rgba(139, 92, 246, 0.05);
-            border-radius: 12px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            transition: all 0.3s;
-        }
-
-        .contact-item:hover {
-            background: rgba(139, 92, 246, 0.1);
-            transform: translateX(5px);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .contact-form {
-            background: rgba(139, 92, 246, 0.05);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #a855f7;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #a855f7;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 3rem 5%;
-            text-align: center;
-            border-top: 1px solid rgba(139, 92, 246, 0.1);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .footer-links a {
-            color: #9ca3af;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #a855f7;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 8rem;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .hero-visual {
-                height: 400px;
-            }
-
-            .energy-circle {
-                width: 350px;
-                height: 350px;
-            }
-
-            .logo-display {
-                font-size: 5rem;
-            }
-
-            .stats {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .investors-content,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .solutions-grid,
-            .tech-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="logo-container">
-            <div class="logo-icon"></div>
+            <img src="assets/logo.png" alt="SAMA Logo" class="logo-icon">
             <span class="logo-text">SAMA</span>
         </div>
         <ul class="nav-links">
@@ -594,55 +68,55 @@
 
         <div class="solutions-grid">
             <div class="solution-card">
-                <span class="solution-icon">🗺️</span>
+                <span class="solution-icon">Map</span>
                 <h3>Advanced Data Mapping</h3>
                 <p>Transform chaos into clarity with neural data mapping technology that processes complex, unstructured data from multiple sources.</p>
             </div>
 
             <div class="solution-card">
-                <span class="solution-icon">🔄</span>
+                <span class="solution-icon">Refresh</span>
                 <h3>Context Switching Mastery</h3>
                 <p>Eliminate AI confusion with our proprietary context management system that maintains perfect memory across conversations.</p>
             </div>
 
             <div class="solution-card">
-                <span class="solution-icon">⚖️</span>
+                <span class="solution-icon">Balance</span>
                 <h3>LLM as a Judge</h3>
                 <p>Deploy AI-powered evaluation frameworks that assess and validate outputs with human-level accuracy.</p>
             </div>
 
             <div class="solution-card">
-                <span class="solution-icon">🤖</span>
+                <span class="solution-icon">Robot</span>
                 <h3>Agent-to-Agent (A2A)</h3>
                 <p>Enable seamless collaboration between multiple AI agents with our proprietary A2A protocols.</p>
             </div>
 
             <div class="solution-card">
-                <span class="solution-icon">🔌</span>
+                <span class="solution-icon">Plug</span>
                 <h3>MCP Protocol Integration</h3>
                 <p>Expert implementation of Model Context Protocol ensures your AI systems communicate with perfect fidelity.</p>
             </div>
 
             <div class="solution-card">
-                <span class="solution-icon">⚡</span>
+                <span class="solution-icon">Lightning</span>
                 <h3>Contradiction Resolution</h3>
                 <p>Advanced algorithms detect and resolve contradictions in multi-agent systems for consistent outputs.</p>
             </div>
 
             <div class="solution-card">
-                <span class="solution-icon">🎯</span>
+                <span class="solution-icon">Target</span>
                 <h3>Intent Understanding</h3>
                 <p>Deep semantic analysis that truly understands user intent, capturing nuance and implicit requirements.</p>
             </div>
 
             <div class="solution-card">
-                <span class="solution-icon">🧭</span>
+                <span class="solution-icon">Compass</span>
                 <h3>Intelligent Routing</h3>
                 <p>Classification systems that route every query to its optimal destination for maximum efficiency.</p>
             </div>
 
             <div class="solution-card">
-                <span class="solution-icon">🚀</span>
+                <span class="solution-icon">Rocket</span>
                 <h3>Custom AI Architecture</h3>
                 <p>Bespoke AI solutions architected from concept to deployment for your unique challenges.</p>
             </div>
@@ -699,7 +173,7 @@
                 </p>
 
                 <div class="highlight-box">
-                    <h4>🎯 Market Opportunity</h4>
+                    <h4>Target Market Opportunity</h4>
                     <p>
                         The global AI market is projected to reach $1.8 trillion by 2030. We're targeting 
                         the critical infrastructure layer that every enterprise needs.
@@ -707,7 +181,7 @@
                 </div>
 
                 <div class="highlight-box">
-                    <h4>💡 Unique Advantage</h4>
+                    <h4>Lightbulb Unique Advantage</h4>
                     <p>
                         Our proprietary solutions in agent coordination and context management create a 
                         defensible moat that competitors can't replicate.
@@ -717,7 +191,7 @@
 
             <div>
                 <div class="highlight-box">
-                    <h4>📈 Traction & Growth</h4>
+                    <h4>Chart Traction & Growth</h4>
                     <p>
                         Working with Fortune 500 companies across finance, healthcare, and technology sectors. 
                         400% year-over-year revenue growth.
@@ -725,7 +199,7 @@
                 </div>
 
                 <div class="highlight-box">
-                    <h4>🏆 World-Class Team</h4>
+                    <h4>Trophy World-Class Team</h4>
                     <p>
                         Based in Hyderabad's thriving Hitech City ecosystem—India's Silicon Valley with 
                         access to top-tier AI talent.
@@ -751,7 +225,7 @@
         <div class="contact-grid">
             <div class="contact-info">
                 <div class="contact-item">
-                    <div class="contact-icon">📧</div>
+                    <div class="contact-icon">Email</div>
                     <div>
                         <strong style="color: #a855f7; display: block; margin-bottom: 0.3rem;">General Inquiries</strong>
                         <span style="color: #d1d5db;">hello@sama.ai</span>
@@ -759,7 +233,7 @@
                 </div>
 
                 <div class="contact-item">
-                    <div class="contact-icon">💼</div>
+                    <div class="contact-icon">Briefcase</div>
                     <div>
                         <strong style="color: #a855f7; display: block; margin-bottom: 0.3rem;">Business Partnerships</strong>
                         <span style="color: #d1d5db;">partnerships@sama.ai</span>
@@ -767,7 +241,7 @@
                 </div>
 
                 <div class="contact-item">
-                    <div class="contact-icon">💰</div>
+                    <div class="contact-icon">Money</div>
                     <div>
                         <strong style="color: #a855f7; display: block; margin-bottom: 0.3rem;">Investor Relations</strong>
                         <span style="color: #d1d5db;">investors@sama.ai</span>
@@ -775,7 +249,7 @@
                 </div>
 
                 <div class="contact-item">
-                    <div class="contact-icon">📍</div>
+                    <div class="contact-icon">Location</div>
                     <div>
                         <strong style="color: #a855f7; display: block; margin-bottom: 0.3rem;">Location</strong>
                         <span style="color: #d1d5db;">Hitech City, Hyderabad, India</span>
@@ -820,7 +294,7 @@
             <a href="#contact">Contact</a>
         </div>
 
-        <p style="color: #6b7280; margin-top: 2rem;">&copy; 2025 sama.ai | Pioneering AI Solutions from Hyderabad</p>
+        <p style="color: #6b7280; margin-top: 2rem;">© 2025 sama.ai | Pioneering AI Solutions from Hyderabad</p>
         <p style="color: #4b5563; font-size: 0.9rem; margin-top: 0.5rem;">Where Intelligence Meets Innovation</p>
     </footer>
 
