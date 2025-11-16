@@ -162,6 +162,70 @@ body {
 }
 
 
+
+/* SOLUTIONS SECTION */
+.solutions {
+    padding: 80px 60px;
+}
+
+.section-title {
+    font-size: 38px;
+    margin-bottom: 40px;
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.solution-card {
+    background: rgba(255,255,255,0.05);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+
+
+/* ABOUT SECTION */
+.about {
+    padding: 80px 60px;
+}
+
+.about-text {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+
+
+/* CONTACT */
+.contact {
+    padding: 80px 60px;
+}
+
+.contact-box {
+    background: rgba(255,255,255,0.05);
+    padding: 40px;
+    border-radius: 16px;
+    width: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.contact-box a {
+    color: #c084fc;
+    text-decoration: none;
+}
+
+.contact-btn {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
     .hero {
@@ -175,5 +239,13 @@ body {
 
     .stats {
         justify-content: center;
+    }
+
+    .solutions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-box {
+        width: 100%;
     }
 }
